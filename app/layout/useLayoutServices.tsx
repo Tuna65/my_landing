@@ -24,7 +24,7 @@ export interface NavItem {
 }
 
 export const navItems: NavItem[] = [
-  { label: "Home", href: "/" },
+  { label: "Trang chủ", href: "/" },
   {
     label: "Blog",
     href: "/blog",
