@@ -1,18 +1,20 @@
+/** @type {import('tailwindcss').Config} */
 module.exports = {
   darkMode: "class", // hoặc 'media' nếu bạn muốn dựa vào cài đặt hệ thống
   content: [
-    "./app/**/*.{js,ts,jsx,tsx,mdx}",
-    "./pages/**/*.{js,ts,jsx,tsx,mdx}",
-    "./components/**/*.{js,ts,jsx,tsx,mdx}",
+    './pages/**/*.{js,ts,jsx,tsx,mdx}',
+    './components/**/*.{js,ts,jsx,tsx,mdx}',
+    './app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
     extend: {
       colors: {
-        ...rootColors,
-        ...generateColors,
+        primary: '#1a73e8',
+        secondary: '#5f6368',
       },
     },
   },
+  plugins: [],
 };
 
 const generateColors = {
