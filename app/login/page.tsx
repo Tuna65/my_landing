@@ -1,10 +1,8 @@
 "use client";
-
-import React, { useState } from "react";
 import Button from "@/components/Button";
 import Input from "@/components/Input";
+import React, { useState } from "react";
 import { FaFacebook } from "react-icons/fa";
-import Text from "@/components/Text";
 
 const Login = () => {
   const [formData, setFormData] = useState({

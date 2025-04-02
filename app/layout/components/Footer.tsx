@@ -9,8 +9,8 @@ const Footer = () => {
   return (
     <footer className="bg-gray-200 dark:bg-gray-800 py-12 xl:px-4 2xl:px-0 px-2">
       <section>
-        <div className="2xl:w-[1366px] w-full m-auto grid grid-cols-1 md:grid-cols-24 gap-8 dark:border-t border-gray-300 dark:border-gray-700 pt-8">
-          <div className="md:col-span-8">
+        <div className="2xl:w-[1366px] w-full m-auto grid grid-cols-1 md:grid-cols-12 gap-8 dark:border-t border-gray-300 dark:border-gray-700 pt-8">
+          <div className="md:col-span-4">
             <h3 className="font-semibold text-xl mb-4 text-gray-800 dark:text-gray-200">
               About
             </h3>
@@ -31,7 +31,7 @@ const Footer = () => {
             </div>
           </div>
 
-          <div className="md:col-span-4">
+          <div className="md:col-span-2">
             <h3 className="font-semibold text-xl mb-4 text-gray-800 dark:text-gray-200">
               Quick Link
             </h3>
@@ -49,7 +49,7 @@ const Footer = () => {
             </ul>
           </div>
 
-          <div className="md:col-span-4">
+          <div className="md:col-span-2">
             <h3 className="font-semibold text-xl mb-4 text-gray-800 dark:text-gray-200">
               Category
             </h3>
@@ -68,7 +68,7 @@ const Footer = () => {
           </div>
 
           {/* Weekly Newsletter Section */}
-          <div className="md:col-span-8 p-6 rounded-md bg-white dark:bg-gray-700">
+          <div className="md:col-span-4 p-6 rounded-md bg-white dark:bg-gray-700">
             <h3 className="font-semibold text-xl mb-4 text-gray-800 dark:text-gray-200">
               Weekly Newsletter
             </h3>
