@@ -12,9 +12,10 @@ interface DropdownProps {
   label: string;
   items: DropdownItem[];
   className?: string;
+  isActive?: boolean;
 }
 
-const Dropdown = ({ label, items, className = "" }: DropdownProps) => {
+const Dropdown = ({ label, items, className = "", isActive = false }: DropdownProps) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -23,7 +24,11 @@ const Dropdown = ({ label, items, className = "" }: DropdownProps) => {
       onMouseEnter={() => setIsOpen(true)}
       onMouseLeave={() => setIsOpen(false)}
     >
-      <button className="flex items-center gap-1 text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-500 transition-colors cursor-pointer">
+      <button className={`flex items-center gap-1 transition-colors cursor-pointer ${
+        isActive 
+          ? "text-blue-600 dark:text-blue-500 font-medium" 
+          : "text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-500"
+      }`}>
         <Text>{label}</Text>
         <svg
           className={`w-4 h-4 transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`}
@@ -48,17 +53,13 @@ const Dropdown = ({ label, items, className = "" }: DropdownProps) => {
           transition-all duration-200 ease-in-out`}
       >
         {/* Dropdown Arrow */}
-        <div className="absolute -top-2 left-4 w-4 h-4 bg-white dark:bg-gray-800 transform rotate-45 shadow-lg" />
+        <div className="absolute -top-2 left-4 w-4 h-4 bg-white dark:bg-gray-800 border-t border-l border-gray-200 dark:border-gray-700 transform rotate-45"></div>
         
-        {items.map((item, index) => (
+        {items.map((item) => (
           <Link
             key={item.href}
             href={item.href}
-            className="block px-4 py-2 text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-500 transition-colors"
-            style={{
-              animationDelay: `${index * 50}ms`,
-              animation: 'slideIn 0.2s ease-out forwards',
-            }}
+            className="block px-4 py-2 text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-500 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
           >
             <Text>{item.label}</Text>
           </Link>
@@ -81,4 +82,4 @@ const Dropdown = ({ label, items, className = "" }: DropdownProps) => {
   );
 };
 
-export default React.memo(Dropdown); 
+export default Dropdown; 

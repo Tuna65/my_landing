@@ -1,8 +1,14 @@
-"use client";
-import { store } from "@/lib/store";
-import { Provider } from "react-redux";
 import "./globals.css";
-import MainLayout from "./layout/MainLayout";
+import { Metadata } from "next";
+import ClientLayout from "./components/ClientLayout";
+
+export const metadata: Metadata = {
+  title: "Tuna65",
+  description: "Tổng hợp những tiện ích hay ho",
+  icons: {
+    icon: "/logo.jpg",
+  },
+};
 
 export default function RootLayout({
   children,
@@ -11,12 +17,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <title>Tuna65</title>
-      <meta name="description" content="Tổng hợp những tiện ích hay ho"></meta>
       <body className="bg-transparent">
-        <Provider store={store}>
-          <MainLayout>{children}</MainLayout>
-        </Provider>
+        <ClientLayout>{children}</ClientLayout>
       </body>
     </html>
   );

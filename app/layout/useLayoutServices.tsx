@@ -35,7 +35,7 @@ export const navItems: NavItem[] = [
     //   { label: "Destinations", href: "/blog/destinations" },
     // ],
   },
-  { label: "Tiện ích", href: "/Tiện ích" },
+  { label: "Tiện ích", href: "/tien-ich" },
   { label: "Game", href: "/game" },
 ];
 

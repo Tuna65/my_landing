@@ -7,11 +7,10 @@ import { changeTheme } from "@/lib/slides/theme";
 import { themeSelector } from "@/lib/slides/theme/selector";
 import { AppDispatch } from "@/lib/store";
 import Image from "next/image";
-import Link from "next/link";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getIconForLabel, navItems } from "../useLayoutServices";
 import ListNav from "./ListNav";
+import NavMobile from "./NavMobile";
 
 const Header = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -46,27 +45,12 @@ const Header = () => {
                   onChange={(v) => dispatch(changeTheme(!v ? "light" : "dark"))}
                 />
               </div>
-
-              {/* <Login /> */}
             </div>
           </div>
         </section>
       </header>
 
-      <nav className="md:hidden fixed bottom-0 left-0 right-0 bg-white dark:bg-gray-900 border-t border-gray-300 dark:border-gray-700 z-50">
-        <div className="flex justify-around items-center p-3">
-          {navItems.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className="flex flex-col items-center text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-500"
-            >
-              {getIconForLabel(item.label)}
-              <span className="text-xs mt-1">{item.label}</span>
-            </Link>
-          ))}
-        </div>
-      </nav>
+      <NavMobile />
     </div>
   );
 };
