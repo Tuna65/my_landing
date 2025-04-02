@@ -85,7 +85,7 @@ const Footer = () => {
         <div className="2xl:w-[1366px] w-full m-auto mt-8 px-4">
           <div className="border-t border-gray-300 dark:border-gray-700 pt-8 flex flex-col md:flex-row justify-between items-center">
             <Text className="text-gray-600 dark:text-gray-400 text-[13px] mb-4 md:mb-0">
-              © JS Template 2023. All Rights Reserved.
+              © JS Template 2025. Author: Tuna65.
             </Text>
             <div className="flex space-x-6">
               <Link

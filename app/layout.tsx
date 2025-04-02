@@ -11,6 +11,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <title>Tuna65</title>
+      <meta name="description" content="Tổng hợp những tiện ích hay ho"></meta>
       <body className="bg-transparent">
         <Provider store={store}>
           <MainLayout>{children}</MainLayout>
