@@ -24,7 +24,7 @@ const NavMobile = () => {
             >
               <div className={`p-2 rounded-full transition-colors ${
                 isActive 
-                  ? "bg-blue-50 dark:bg-blue-900/20" 
+                  ? "bg-blue-100 dark:bg-blue-900/50 scale-125" 
                   : "hover:bg-gray-100 dark:hover:bg-gray-800"
               }`}>
                 {getIconForLabel(item.label)}

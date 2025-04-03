@@ -11,6 +11,12 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import ListNav from "./ListNav";
 import NavMobile from "./NavMobile";
+import { IoMoon, IoSunnyOutline } from "react-icons/io5";
+import { IoSunny } from "react-icons/io5";
+
+type Props = {
+  children: React.ReactNode;
+};
 
 const Header = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -37,12 +43,19 @@ const Header = () => {
 
             {/* Desktop Search and Theme */}
 
-            <div className="hidden md:flex gap-3 items-center">
+            <div className="flex gap-3 items-center">
               <div className="flex gap-3 items-center">
-                <Input />
+                <div className="hidden md:block">
+                  <Input />
+                </div>
                 <Switch
                   value={theme !== "dark" ? false : true}
                   onChange={(v) => dispatch(changeTheme(!v ? "light" : "dark"))}
+                  icon={
+                    <Icon>
+                      {theme === "dark" ? <IoMoon /> : <IoSunnyOutline />}
+                    </Icon>
+                  }
                 />
               </div>
             </div>
@@ -56,3 +69,8 @@ const Header = () => {
 };
 
 export default React.memo(Header);
+
+const Icon = (props: Props) => {
+  const { children } = props;
+  return <div className="py-[6px] scale-125 ml-[6px]">{children}</div>;
+};

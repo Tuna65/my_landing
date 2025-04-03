@@ -6,29 +6,32 @@ type Props = {
   className?: string;
   size?: "large" | "middle" | "small";
   onClick?: () => void;
+  disabled?: boolean;
 };
 
 const Button = (props: Props) => {
-  const { children, type, className, size, onClick } = props;
+  const { children, type, className, size, onClick, disabled } = props;
 
   const renderStyle = useMemo(() => {
+    const baseStyle = disabled ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer';
+    
     switch (type) {
       case "primary": {
-        return `bg-blue-500 text-white`;
+        return `${baseStyle} bg-blue-500 text-white`;
       }
 
       case "default": {
-        return `bg-white dark:bg-gray-800 dark:text-white dark:border-gray-600 text-gray-900 border border-black border-opacity-20 border-solid`;
+        return `${baseStyle} bg-white dark:bg-gray-800 dark:text-white dark:border-gray-600 text-gray-900 border border-black border-opacity-20 border-solid`;
       }
 
       case "outline": {
-        return `bg-white text-blue-500 border border-blue-500  border-solid`;
+        return `${baseStyle} bg-white text-blue-500 border border-blue-500 border-solid`;
       }
 
       default:
-        return `bg-blue-500 text-white`;
+        return `${baseStyle} bg-blue-500 text-white`;
     }
-  }, [type]);
+  }, [type, disabled]);
 
   const renderSize = useMemo(() => {
     switch (size) {
@@ -49,8 +52,8 @@ const Button = (props: Props) => {
   return (
     <div>
       <button
-        className={`${renderStyle} ${className} ${renderSize} rounded-md cursor-pointer`}
-        onClick={onClick}
+        className={`${renderStyle} ${renderSize} ${className} rounded-md transition-all duration-200`}
+        onClick={disabled ? undefined : onClick}
       >
         {children}
       </button>
@@ -58,4 +61,4 @@ const Button = (props: Props) => {
   );
 };
 
-export default React.memo(Button);
+export default Button;

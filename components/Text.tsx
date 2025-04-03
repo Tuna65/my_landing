@@ -1,19 +1,24 @@
 import React from "react";
+import { cn } from "@/lib/utils";
 
 type Props = {
-  children: string;
+  children: React.ReactNode;
   className?: string;
+  onClick?: () => void;
+  style?: React.CSSProperties;
+  title?: string;
 };
 
-const Text = (props: Props) => {
-  const { children, className } = props;
-
+const Text = ({ children, className, onClick, style, title }: Props) => {
   return (
-    <div>
-      <p className={`${className} text-black dark:text-gray-300`} title={children}>
-        {children}
-      </p>
-    </div>
+    <p
+      className={cn("text-gray-800 dark:text-white", className)}
+      onClick={onClick}
+      style={style}
+      title={title}
+    >
+      {children}
+    </p>
   );
 };
 

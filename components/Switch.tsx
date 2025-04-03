@@ -7,10 +7,11 @@ import { SuccessFunc } from "@/models";
 type Props = {
   onChange?: SuccessFunc<boolean>;
   value?: boolean;
+  icon?: React.ReactNode;
 };
 
 const Switch = (props: Props) => {
-  const { onChange, value } = props;
+  const { onChange, value, icon } = props;
 
   const [isDarkTheme, setIsDarkTheme] = useState<boolean>(false);
 
@@ -32,7 +33,7 @@ const Switch = (props: Props) => {
         <div
           className={`relative ${data ? "right-[-22px]" : "right-0"} effect`}
         >
-          <Image src={iconLight} alt="" className="mt-[1px]"/>
+          {icon ? icon : <Image src={iconLight} alt="" className="mt-[1px]" />}
         </div>
       </div>
     </div>

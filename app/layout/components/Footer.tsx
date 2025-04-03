@@ -7,17 +7,15 @@ import { categoryItems, footerItems } from "../useLayoutServices";
 
 const Footer = () => {
   return (
-    <footer className="bg-gray-200 dark:bg-gray-800 py-12 xl:px-4 2xl:px-0 px-2">
+    <footer className="bg-gray-200 dark:bg-gray-900 py-4 xl:px-4 2xl:px-0 px-2 dark:border-t border-gray-300 dark:border-gray-700">
       <section>
-        <div className="2xl:w-[1366px] w-full m-auto grid grid-cols-1 md:grid-cols-12 gap-8 dark:border-t border-gray-300 dark:border-gray-700 pt-8">
+        <div className="2xl:w-[1366px] w-full m-auto grid grid-cols-1 md:grid-cols-12 gap-8 ">
           <div className="md:col-span-4">
             <h3 className="font-semibold text-xl mb-4 text-gray-800 dark:text-gray-200">
-              About
+              Giới thiệu
             </h3>
             <Text className="text-gray-600 dark:text-gray-400 mb-4">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam
+              Phạm Anh Tuấn developer
             </Text>
             <div className="space-y-2">
               <div className="text-gray-600 dark:text-gray-400">
@@ -51,7 +49,7 @@ const Footer = () => {
 
           <div className="md:col-span-2">
             <h3 className="font-semibold text-xl mb-4 text-gray-800 dark:text-gray-200">
-              Category
+              Danh mục
             </h3>
             <ul className="space-y-2">
               {categoryItems.map((item) => (

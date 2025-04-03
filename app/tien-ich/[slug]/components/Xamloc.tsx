@@ -18,36 +18,83 @@ const Xamloc = () => {
   const [memberNameInput, setMemberNameInput] = useState<string>("");
   const [unit, setUnit] = useState<string>("");
 
+  const onSaveData = (data: Member[]) => {
+    localStorage.setItem("memberName", JSON.stringify(data));
+  };
+
   const handleAddMember = () => {
     if (memberNameInput) {
       const newMember = [
         ...memberName,
-        { name: memberNameInput, point: [0], currentPoint: 0 },
+        { name: memberNameInput, point: [], currentPoint: 0 },
       ];
       setMemberName(newMember);
       setMemberHistory([
         ...memberHistory,
-        { name: memberNameInput, point: [0], currentPoint: 0 },
+        { name: memberNameInput, point: [], currentPoint: 0 },
       ]);
       setMemberNameInput("");
-      localStorage.setItem("memberName", JSON.stringify(newMember));
+      onSaveData(newMember);
     }
   };
 
+  const handleDeleteMember = (name: string) => {
+    const newMember = memberName.filter((i) => i.name !== name);
+    setMemberName(newMember);
+    onSaveData(newMember);
+  };
+
+  const handleUndo = (name: string) => {
+    const newData = memberName.map((i) => {
+      if (i.name === name)
+        return { ...i, point: i.point.slice(0, -1), currentPoint: 0 };
+      return i;
+    });
+    setMemberName(newData);
+    onSaveData(newData);
+  };
+
+  const onChangePoint = (name: string, point: number | string) => {
+    const newData = memberName.map((i) => {
+      if (i.name === name) {
+        return {
+          ...i,
+          point: (!isNaN(Number(point))
+            ? [...i.point, Number(point)]
+            : i.point
+          ).filter((i) => i !== 0),
+          currentPoint: point,
+        };
+      }
+      return i;
+    });
+
+    setMemberName(newData);
+    onSaveData(newData);
+  };
+  const handleResetMember = (name: string) => {
+    setMemberName(
+      memberName.map((i) => {
+        if (i.name === name) return { ...i, point: [], currentPoint: 0 };
+        return i;
+      })
+    );
+  };
+
   const colValue = useMemo(() => {
-    if (memberName.length >= 5) return "col-span-12 md:col-span-4 lg:col-span-3";
-    if (memberName.length === 4) return "col-span-12 md:col-span-6 lg:col-span-3";
-    if (memberName.length === 3) return "col-span-12 md:col-span-6 lg:col-span-4";
+    if (memberName.length >= 5)
+      return "col-span-12 md:col-span-4 lg:col-span-3";
+    if (memberName.length === 4)
+      return "col-span-12 md:col-span-6 lg:col-span-3";
+    if (memberName.length === 3)
+      return "col-span-12 md:col-span-6 lg:col-span-4";
     if (memberName.length === 2) return "col-span-12 md:col-span-6";
     return "col-span-12";
   }, [memberName.length]);
 
   useEffect(() => {
     const memberNameHistory = localStorage.getItem("memberName");
-
-    if (memberNameHistory) {
-      setMemberName(JSON.parse(memberNameHistory));
-    }
+    if (memberNameHistory) setMemberName(JSON.parse(memberNameHistory));
   }, []);
 
   return (
@@ -57,7 +104,7 @@ const Xamloc = () => {
           <Input
             showSearchIcon={false}
             placeholder="Nhập tên thành viên"
-            onChange={(e) => setMemberNameInput(e.target.value)}
+            onChange={(e) => setMemberNameInput(e)}
             value={memberNameInput}
             onKeyDown={(e) => {
               if (e.key === "Enter") handleAddMember();
@@ -101,68 +148,29 @@ const Xamloc = () => {
                   showSearchIcon={false}
                   placeholder="Nhập số điểm"
                   onFocus={(e) => e.target.select()}
-                  value={item.currentPoint}
-                  onChange={(e) => {
-                    setMemberName(
-                      memberName.map((i) => {
-                        if (i.name === item.name) {
-                          return {
-                            ...i,
-                            point: !isNaN(Number(e.target.value))
-                              ? [...i.point, Number(e.target.value)]
-                              : i.point,
-                            currentPoint: e.target.value,
-                          };
-                        }
-                        return i;
-                      })
-                    );
-                  }}
+                  value={item.currentPoint as string}
+                  onChange={(e) => onChangePoint(item.name, e)}
                 />
 
                 <div className="flex gap-2 justify-end">
                   <Button
                     size="large"
                     type="default"
-                    onClick={() =>
-                      setMemberName(
-                        memberName.filter((i) => i.name !== item.name)
-                      )
-                    }
+                    onClick={() => handleDeleteMember(item.name)}
                   >
                     Delete
                   </Button>
                   <Button
                     size="large"
                     type="outline"
-                    onClick={() => {
-                      setMemberName(
-                        memberName.map((i) => {
-                          if (i.name === item.name)
-                            return { ...i, point: [0], currentPoint: 0 };
-                          return i;
-                        })
-                      );
-                    }}
+                    onClick={() => handleResetMember(item.name)}
                   >
                     Reset
                   </Button>
                   <Button
                     type="primary"
                     size="large"
-                    onClick={() => {
-                      setMemberName(
-                        memberName.map((i) => {
-                          if (i.name === item.name)
-                            return {
-                              ...i,
-                              point: i.point.slice(0, -1),
-                              currentPoint: 0,
-                            };
-                          return i;
-                        })
-                      );
-                    }}
+                    onClick={() => handleUndo(item.name)}
                   >
                     Undo
                   </Button>

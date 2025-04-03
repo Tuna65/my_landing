@@ -1,4 +1,10 @@
-import { IoDocumentText, IoHome, IoMail, IoNewspaper } from "react-icons/io5";
+import {
+  IoExtensionPuzzle,
+  IoGameController,
+  IoHome,
+  IoMail,
+  IoNewspaper,
+} from "react-icons/io5";
 
 export const getIconForLabel = (label: string) => {
   switch (label) {
@@ -6,10 +12,10 @@ export const getIconForLabel = (label: string) => {
       return <IoHome className="text-2xl" />;
     case "Blog":
       return <IoNewspaper className="text-2xl" />;
-    case "Single Post":
-      return <IoDocumentText className="text-2xl" />;
-    case "Pages":
-      return <IoNewspaper className="text-2xl" />;
+    case "Tiện ích":
+      return <IoExtensionPuzzle className="text-2xl" />;
+    case "Game":
+      return <IoGameController className="text-2xl" />;
     case "Contact":
       return <IoMail className="text-2xl" />;
     default:
