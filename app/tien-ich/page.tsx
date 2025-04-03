@@ -16,7 +16,7 @@ const Game = () => {
             key={extension.slug}
             className="md:col-span-4 col-span-6 shadow-md rounded-lg p-4 border border-gray-200 dark:border-gray-700"
           >
-            <Link href={`/tien-ich/${extension.slug}`}>
+            <Link href={`/tien-ich/${extension.slug}?type=rn`}>
               <div className="">
                 <div className="flex items-center gap-2">
                   {extension.icon}
