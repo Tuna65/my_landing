@@ -5,6 +5,7 @@ import Input from "@/components/Input";
 import { func } from "@/utils/func";
 import Button from "@/components/Button";
 import { Select } from "@/components/Select";
+import { optionNumberPerRound } from "@/app/tien-ich/useGameServices";
 
 const RandomNumber = () => {
   const [number, setNumber] = useState({ min: 0, max: 1000 });
@@ -20,6 +21,7 @@ const RandomNumber = () => {
     const newResult: string[] = result.map(() => {
       return padNumber(func.getRandomNumber(number.min, number.max));
     });
+
     if (numberPerRound === 0) {
       setResult(newResult);
       return;
@@ -45,15 +47,17 @@ const RandomNumber = () => {
       }
       setResult(
         newResult.map((item, idx) => {
+          console.log(padNumber(Number(currentNumber)));
+
           if (idx < round) return padNumber(Number(item));
-          return padNumber(currentNumber);
+          return padNumber(Number(currentNumber));
         })
       );
     }, 40);
   };
 
   const padNumber = (v: number) => {
-    return v.toString().padStart(number.max.toString().length - 1, "0");
+    return v.toString().padStart(number.max.toString().length, "0");
   };
 
   return (
@@ -114,14 +118,7 @@ const RandomNumber = () => {
 
         <div className="flex gap-2 items-center">
           <Select
-            options={[
-              { label: "Tất cả", value: 0 },
-              { label: "Lần lượt", value: 1 },
-              { label: "2 số 1 lần", value: 2 },
-              { label: "3 số 1 lần", value: 3 },
-              { label: "5 số 1 lần", value: 5 },
-              { label: "10 số 1 lần", value: 10 },
-            ]}
+            options={optionNumberPerRound}
             className="w-[200px]"
             value={numberPerRound}
             onChange={(e) => setNumberPerRound(Number(e))}

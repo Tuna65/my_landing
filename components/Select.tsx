@@ -85,7 +85,9 @@ export const Select: React.FC<SelectProps> = ({
             <div
               key={option.value}
               className={`${getSizeClasses()} cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700 ${
-                value === option.value ? "bg-blue-50 text-blue-600 dark:bg-gray-700" : ""
+                value === option.value
+                  ? "bg-blue-50 text-blue-600 dark:bg-gray-700"
+                  : ""
               }`}
               onClick={() => {
                 onChange?.(option.value);

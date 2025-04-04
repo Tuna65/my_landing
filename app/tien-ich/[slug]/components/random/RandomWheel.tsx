@@ -1,13 +1,11 @@
 "use client";
-import React, { useState, useRef, useEffect } from "react";
-import Text from "@/components/Text";
-import Input from "@/components/Input";
-import Button from "@/components/Button";
-import { func } from "@/utils/func";
 import { COLORS } from "@/app/tien-ich/useGameServices";
+import Text from "@/components/Text";
 import Textarea from "@/components/Textarea";
+import { useEffect, useRef, useState } from "react";
+import ModalResult from "./ModalResult";
 
-type Option = {
+export type Option = {
   id: number;
   text: string;
   color: string;
@@ -25,15 +23,6 @@ const RandomWheel = () => {
   const startTimeRef = useRef<number | null>(null);
   const initialSpeedRef = useRef<number>(0);
   const finalRotationRef = useRef<number>(0);
-
-  // Cleanup animation khi component unmount
-  useEffect(() => {
-    return () => {
-      if (animationRef.current) {
-        cancelAnimationFrame(animationRef.current);
-      }
-    };
-  }, []);
 
   // Hàm lấy màu cho option mới
   const getNextColor = (index: number) => {
@@ -145,6 +134,15 @@ const RandomWheel = () => {
     return `conic-gradient(from 0deg, ${gradientStops.join(", ")})`;
   };
 
+  // Cleanup animation khi component unmount
+  useEffect(() => {
+    return () => {
+      if (animationRef.current) {
+        cancelAnimationFrame(animationRef.current);
+      }
+    };
+  }, []);
+
   return (
     <div className="flex flex-col md:flex-row-reverse items-center lg:gap-12 gap-4 my-4">
       <div className="w-full max-w-md dark:bg-gray-800 rounded-lg p-4">
@@ -176,7 +174,7 @@ const RandomWheel = () => {
               const angle = (360 / options.length) * index;
               const segmentAngle = 360 / options.length;
               const textAngle = angle + segmentAngle / 2; // Góc của đường phân giác
-              
+
               return (
                 <div
                   key={option.id}
@@ -185,14 +183,7 @@ const RandomWheel = () => {
                     transform: `rotate(${textAngle}deg)`,
                   }}
                 >
-                  <Text 
-                    className="text-white font-bold text-sm whitespace-nowrap drop-shadow-md absolute text-center"
-                    style={{
-                    //   transform: `translate(-50%, -150%) rotate(${-rotation}deg)`,
-                      left: '45%',
-                      top: '5%', // Bắt đầu từ tâm
-                    }}
-                  >
+                  <Text className="left-[45%] top-[5%] text-white font-bold text-sm whitespace-nowrap drop-shadow-md absolute text-center">
                     {option.text}
                   </Text>
                 </div>
@@ -205,30 +196,12 @@ const RandomWheel = () => {
         <Text>Click để quay</Text>
       </div>
 
-      {/* Popup kết quả */}
       {showResult && selectedOption && (
-        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
-          <div className="bg-white dark:bg-gray-800 rounded-lg p-6 max-w-sm w-full mx-4">
-            <div className="text-center mb-6">
-              <Text className="text-2xl font-bold mb-2">Kết quả</Text>
-              <div className="flex items-center justify-center gap-2 mb-4">
-                <div
-                  className="w-4 h-4 rounded-full"
-                  style={{ backgroundColor: selectedOption.color }}
-                ></div>
-                <Text className="text-xl">{selectedOption.text}</Text>
-              </div>
-            </div>
-            <div className="flex gap-4 justify-center">
-              <Button onClick={handleKeepResult} size="middle" type="primary">
-                Giữ lại
-              </Button>
-              <Button onClick={handleRemoveResult} size="middle" type="outline">
-                Xóa
-              </Button>
-            </div>
-          </div>
-        </div>
+        <ModalResult
+          handleKeepResult={handleKeepResult}
+          handleRemoveResult={handleRemoveResult}
+          selectedOption={selectedOption}
+        />
       )}
     </div>
   );

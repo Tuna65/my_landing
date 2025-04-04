@@ -62,3 +62,12 @@ export const COLORS = [
   "#14b8a6",
   "#84cc16",
 ];
+
+export const optionNumberPerRound = [
+  { label: "Tất cả", value: 0 },
+  { label: "Lần lượt", value: 1 },
+  { label: "2 số 1 lần", value: 2 },
+  { label: "3 số 1 lần", value: 3 },
+  { label: "5 số 1 lần", value: 5 },
+  { label: "10 số 1 lần", value: 10 },
+];
