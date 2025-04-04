@@ -46,9 +46,7 @@ const RandomNumber = () => {
         }
       }
       setResult(
-        newResult.map((item, idx) => {
-          console.log(padNumber(Number(currentNumber)));
-
+        newResult.map((item, idx) => {  
           if (idx < round) return padNumber(Number(item));
           return padNumber(Number(currentNumber));
         })
