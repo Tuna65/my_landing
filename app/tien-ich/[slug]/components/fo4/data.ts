@@ -27,7 +27,7 @@ export const fo4List = [
     lable: "Tuyên",
     value: "05",
     link: "https://cdn.24h.com.vn/upload/livescore/4-2022/kytq1/2022-10-17/082825353_juventus_35x35.png",
-    score: 0,
+    score: 3,
   },
 ];
 
@@ -126,13 +126,13 @@ export const match = [
           lable: "Tuấn",
           value: "01",
           link: "https://cdn.24h.com.vn/upload/livescore/1-2022/kytq1/2022-01-18/133520435_manchester-united_35x35.png",
-          score: null,
+          score: 0,
         },
         away: {
           lable: "Tuyên",
           value: "05",
           link: "https://cdn.24h.com.vn/upload/livescore/4-2022/kytq1/2022-10-17/082825353_juventus_35x35.png",
-          score: null,
+          score: 2,
         },
       },
       {
