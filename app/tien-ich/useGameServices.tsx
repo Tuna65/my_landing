@@ -31,6 +31,11 @@ export const listExtension = (them: string) => {
       slug: "random",
       icon: <IoApertureOutline style={styleIcon} />,
     },
+    {
+      name: "FO$-Xóm chùa",
+      slug: "fo4",
+      icon: <IoApertureOutline style={styleIcon} />,
+    },
   ];
 };
 
