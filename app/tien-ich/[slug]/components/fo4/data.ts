@@ -9,7 +9,7 @@ export const fo4List = [
     lable: "Văn",
     value: "02",
     link: "https://cdn.24h.com.vn/upload/livescore/2-2025/kytq1/2025-04-16/133519118_image_35x35.png",
-    score: 0,
+    score: 3,
   },
   {
     lable: "Hưng",
@@ -93,7 +93,7 @@ export const match = [
           lable: "Văn",
           value: "02",
           link: "https://cdn.24h.com.vn/upload/livescore/2-2025/kytq1/2025-04-16/133519118_image_35x35.png",
-          score: 0,
+          score: 1,
         },
         away: {
           lable: "Tuyên",
