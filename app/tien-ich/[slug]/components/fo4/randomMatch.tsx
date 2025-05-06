@@ -11,7 +11,7 @@ const randomMatch = (props: Props) => {
   const generateSchedule = () => {
     const teams = [...fo4List];
     if (teams.length % 2 !== 0) {
-      teams.push({ lable: "Bye", value: "bye", link: "", score: 0 }); // Add dummy team if odd number
+      teams.push({ lable: "Bye", value: "bye", link: "", score: 0, match: 0 }); // Add dummy team if odd number
     }
 
     const rounds = [];
@@ -44,7 +44,7 @@ const randomMatch = (props: Props) => {
 
     setSchedule([...rounds, ...returnRounds]);
   };
-  
+
   return (
     <div>
       <div className="mb-4">
