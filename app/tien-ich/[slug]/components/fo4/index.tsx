@@ -29,7 +29,7 @@ const FO4 = () => {
               : "bg-gray-200 text-gray-700"
           }`}
         >
-          Danh sách đội
+          Bảng xếp hạng
         </button>
       </div>
 
