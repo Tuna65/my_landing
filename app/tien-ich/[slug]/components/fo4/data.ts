@@ -3,7 +3,7 @@ export const fo4List = [
     lable: "Tuấn",
     value: "01",
     link: "https://cdn.24h.com.vn/upload/livescore/1-2022/kytq1/2022-01-18/133520435_manchester-united_35x35.png",
-    score: null,
+    score: 0,
   },
   {
     lable: "Văn",
@@ -15,19 +15,19 @@ export const fo4List = [
     lable: "Hưng",
     value: "03",
     link: "https://cdn.24h.com.vn/upload/livescore/2-2021/kytq1/2021-05-17/borussia-dortmund_35x35.png",
-    score: null,
+    score: 0,
   },
   {
     lable: "Điệp",
     value: "04",
     link: "https://cdn.24h.com.vn/upload/livescore/2-2025/kytq1/2025-04-15/085538299_image_35x35.png",
-    score: null,
+    score: 3,
   },
   {
     lable: "Tuyên",
     value: "05",
     link: "https://cdn.24h.com.vn/upload/livescore/4-2022/kytq1/2022-10-17/082825353_juventus_35x35.png",
-    score: null,
+    score: 0,
   },
 ];
 
@@ -107,13 +107,13 @@ export const match = [
           lable: "Hưng",
           value: "03",
           link: "https://cdn.24h.com.vn/upload/livescore/2-2021/kytq1/2021-05-17/borussia-dortmund_35x35.png",
-          score: null,
+          score: 0,
         },
         away: {
           lable: "Điệp",
           value: "04",
           link: "https://cdn.24h.com.vn/upload/livescore/2-2025/kytq1/2025-04-15/085538299_image_35x35.png",
-          score: null,
+          score: 2,
         },
       },
     ],
