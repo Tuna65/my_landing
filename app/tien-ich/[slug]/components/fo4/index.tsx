@@ -42,7 +42,7 @@ const FO4 = () => {
                 {round.matches.map((match, idx) => (
                   <div
                     key={idx}
-                    className="flex items-center justify-between p-3 border rounded-md"
+                    className="grid grid-cols-3 items-center p-3 border rounded-md"
                   >
                     <div className="flex items-center gap-2">
                       <Image
@@ -53,8 +53,20 @@ const FO4 = () => {
                       />
                       <Text>{match.home.lable}</Text>
                     </div>
-                    <Text>VS</Text>
-                    <div className="flex items-center gap-2">
+                    <div className="flex items-center gap-8 justify-center">
+                      {match.home.score !== null && (
+                        <Text className=" !dark:text-red-600 font-semibold">
+                          {match.home.score}
+                        </Text>
+                      )}
+                      <Text>VS</Text>
+                      {match.away.score !== null && (
+                        <Text className=" !dark:text-red-600 font-semibold">
+                          {match.away.score}
+                        </Text>
+                      )}
+                    </div>
+                    <div className="flex items-center gap-2 justify-end">
                       <Text>{match.away.lable}</Text>
                       <Image
                         alt=""
@@ -74,7 +86,7 @@ const FO4 = () => {
       {activeTab === "teams" && (
         <div className="grid grid-cols-10 xl:gap-4 gap-2">
           {fo4List
-            .sort((a: any, b: any) => a.score - b.score)
+            .sort((a: any, b: any) => b.score - a.score)
             .map((f, idx) => (
               <div
                 key={`for-${idx}`}
