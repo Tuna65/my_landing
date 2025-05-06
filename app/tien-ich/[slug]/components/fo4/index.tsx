@@ -42,7 +42,7 @@ const FO4 = () => {
                 {round.matches.map((match, idx) => (
                   <div
                     key={idx}
-                    className="grid grid-cols-3 items-center p-3 border rounded-md"
+                    className="grid grid-cols-3 items-center p-3  rounded-md"
                   >
                     <div className="flex items-center gap-2">
                       <Image
@@ -84,20 +84,30 @@ const FO4 = () => {
       )}
 
       {activeTab === "teams" && (
-        <div className="grid grid-cols-10 xl:gap-4 gap-2">
+        <div className=" xl:gap-4 gap-2">
+          <div className="border border-gray-700  dark:border-gray-400 p-2 xl:p-4">
+            <div className="grid grid-cols-12">
+              <div className="flex items-center gap-2 col-span-10">
+                <Text>Đội</Text>
+              </div>
+              <Text className="col-span-1 text-center">Số trận</Text>
+              <Text className="col-span-1 text-center">Điểm số</Text>
+            </div>
+          </div>
           {fo4List
             .sort((a: any, b: any) => b.score - a.score)
             .map((f, idx) => (
               <div
                 key={`for-${idx}`}
-                className="col-span-2 border border-gray-700 rounded-md dark:border-gray-400 p-2 xl:p-4"
+                className="border border-gray-700  dark:border-gray-400 p-2 xl:p-4"
               >
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-2">
+                <div className="grid grid-cols-12">
+                  <div className="flex items-center gap-2 col-span-10">
                     <Image alt="" src={f.link} width={25} height={25} />
                     <Text>{f.lable}</Text>
                   </div>
-                  <Text>{f.score}</Text>
+                  <Text className="col-span-1 text-center">{f.match}</Text>
+                  <Text className="col-span-1 text-center">{f.score}</Text>
                 </div>
               </div>
             ))}
